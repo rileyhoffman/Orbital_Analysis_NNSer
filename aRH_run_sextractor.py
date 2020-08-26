@@ -4,14 +4,11 @@ import pyfits
 sys.path.insert(0,'/home/student/RHoffman_Final_Project/MatchImagesgood/')
 from MatchImages import *
 
-# Change these paths to point to the correct directories
-image_path = '/home/student/RHoffman_Final_Project/'          # Location of fit images
-outdir = '/home/student/RHoffman_Final_Project/sextractor_output/'       # Location to save catalog files
+image_path = '/home/student/RHoffman_Final_Project/'         # Location of fit images
+outdir = '/home/student/RHoffman_Final_Project/sextractor_output/'       
 
 
 
-#First, make a list of all the filenames of your fits images.
-#You can do this by hand, or use python to search a directory like below.
 image_list = []
 for root, dirs, files in os.walk(image_path):
     for filename in files:
@@ -19,7 +16,7 @@ for root, dirs, files in os.walk(image_path):
             image_list.append(root+filename)
 
 
-#Next, run source extractor on each image. 
+
 #Make sure to make a directory to output the .cat files
 #try:
 #    os.mkdir(outdir)
@@ -40,8 +37,6 @@ for root, dirs, files in os.walk(image_path):
 #        print "Unable to make catalog file"
 #    print ""
 
-#Finally, run Match_images to match up the stars in each image.
-#You'll probably want to match every image with just the first image.
 #for catalog_location in catalog_list[1:]:
 #    outpath=outdir+catalog_list[0].split('/')[-1].split('.')[0]+'_'+catalog_location.split('/')[-1].split('.')[0]+'_matched.cat'
 #    cat1 = catalog_list[0]
@@ -59,7 +54,6 @@ for root, dirs, files in os.walk(image_path):
 
 
 
-#You can also get a list observation times
 image_time_list = []
 for image_location in image_list:
     image = pyfits.open(image_location)
